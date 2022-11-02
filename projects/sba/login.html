@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+<div class="login">
+    <div class="logo"></div>
+    <form action="">
+        <div>
+            <label for="compId">会社ID</label>
+            <select name="compId" id="compId">
+                <option value="1001">SBANAM</option>
+                <option value="1003">MUKAM</option>
+                <option value="1009">OKA</option>
+            </select>
+            <input type="button" value="ログイン">
+        </div>
+        <div class="row">
+            <label for="userId">ユーザーID</label>
+            <input type="text" name="userId" id="userId">
+            <input type="button" value="キャンセル">
+        </div>
+        <div>
+            <label for="password">パスワード</label>
+            <input type="text" name="password" id="password">
+        </div>
+        <div>
+            <label for="newPassword">新しいパスワード</label>
+            <input type="text" name="newPassword" id="newPassword">
+        </div>
+        <div>
+            <label for="newConfirmPassword">新しいパスワード（確認用）</label>
+            <input type="text" name="newConfirmPassword" id="newConfirmPassword">
+        </div>
+    </form>
+</div>
+</body>
+</html>

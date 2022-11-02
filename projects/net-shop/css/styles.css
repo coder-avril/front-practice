@@ -1,0 +1,761 @@
+@charset "UTF-8";
+
+body {
+    background-color: #fff;
+    font-size: 12px;
+    font-family: "微软雅黑";
+}
+
+/*样式的建议编写顺序：定位、盒子模型、文字、其他*/
+/* region 网站导航 ********************/
+.site-nav {
+    height: 36px; /* 不要纠结于为啥是36px 这里是测量出来的（另外不设置宽度 是因为div是block元素 会自动填充父元素 */
+    line-height: 36px; /* 设置行高和高度一致 让文字垂直居中 */
+    background-color: #333;
+}
+
+.site-nav a {
+    color: #ccc;
+}
+
+.site-nav a:hover {
+    color: #fff;
+}
+
+.site-nav .slogan { /* 水平方向布局 基本上采取浮动居多 */
+    float: left;
+    
+    /* 浮动元素之间 margin还是好使的 */
+    margin-right: 30px;
+}
+
+.site-nav .notice-list {
+    float: left;
+    /* 背景图片 不平铺 水平靠左 垂直居中 */
+    background: url("../images/notice-icon.gif") no-repeat left center;
+    height: 36px; /* 设置div的高度为36px 跟行高一致让其背景图片居中 */
+    /* 浮动元素 padding也是好使的 */
+    padding-left: 26px;
+    overflow: hidden; /* 超过父元素的信息自动隐藏 */
+}
+
+.site-nav .notice-list ul { /* TODO  实现小喇叭右边的信息滚动 */
+    position: relative;
+    top: 0; /* 通过JS 更改top的值 让其不断地减小 由于是相对定位 它会相对自己不断向上移动（超过父元素div会自动隐藏 */
+}
+
+/* 想办法让小喇叭后面的文字也居中 */
+.site-nav .notice-list li {
+    height: 36px;
+}
+
+.site-nav .notice-list a {
+    vertical-align: top;
+    text-decoration: underline;
+    color: #b4a078;
+}
+
+.site-nav .notice-list a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.site-nav .item {
+    float: left;
+}
+
+.site-nav .login { /* 登录跟注册之间的间距 */
+    margin-right: 20px;
+}
+
+.site-nav .divider { /* 分隔线式样 */
+    float: left;
+    width: 1px;
+    height: 16px;
+    margin: 10px 10px 0; /* 上10px 左右10px 下0 */
+    background-color: #5c5c5c;
+}
+
+.site-nav .download-app::before { /* 通过伪元素设置图标 */
+    content: "";
+    display: inline-block; /* before和after默认是inline 跟span类似 无法设置宽高 需要更改 */
+    width: 7px;
+    height: 16px;
+    /* 通过精灵图 并锁定小手机图标的位置 */
+    background: url("../images/component.png") no-repeat 0 6px;
+    margin-right: 6px; /* 与右边文字的距离 */
+}
+
+.site-nav .service::after {
+    content: "";
+    display: inline-block;
+    width: 11px;
+    height: 5px;
+    background: url("../images/component.png") no-repeat 0 -321px;
+    margin-left: 10px; /* 与左边文字的距离 */
+}
+
+.site-nav .service:hover::after {
+    transform: rotate(180deg);
+}
+/* endregion */
+
+/* region 功能导航 ********************/
+.fun-nave { /* 整体高度204px */
+    position: relative;
+    z-index: 1; /* 防止被后面的定位元素所覆盖 将z-index设置高一点 */
+    box-shadow: 0 0 3px rgba(0,0,0,.2);
+}
+
+.fun-nave .row { /* 方便决定定位.fun-nave .tab-nav */
+    height: 204px;
+}
+
+.fun-nave .logo {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+
+    width: 180px;
+    height: 60px;
+    margin: 0 auto; /* 块级元素水平居中 */
+    background-position: 0 -146px;
+}
+
+.fun-nave .logo a { /* logo图片一般都是链接 所以让里面再包含个a */
+    display: block; /* 通过block 让a自动水平方向填满父元素 */
+    height: 100%; 
+    font-size: 0; /* font-size为0 可以巧妙的让里面的文字无法被看见 */
+}
+
+/* 购物车 */
+.fun-nave .buy-car {
+    position: absolute;
+    right: 9px;
+    top: 70px;
+
+    width: 34px;
+    height: 32px;
+}
+
+.fun-nave .buy-car:hover .car { /* 鼠标挪到整辆购物车后 找到左下角的小车 更换图片 */
+    background-position: 0 -80px;
+}
+
+/*
+  脱标元素的特点
+  1) 可以随意设置宽高 2)宽高默认由内容决定 3)不再受标准流的约束 4)不再给父元素汇报宽高数据
+  注意：脱标元素内部默认还是按照标准流布局
+*/
+.fun-nave .buy-car .car {
+    position: absolute; /* 绝对定位后脱标 让其相对row来定位 */
+    /* 车子在左下角 */
+    left: 0;
+    bottom: 0;
+
+    width: 23px;
+    height: 23px;
+    background-position: 0 -113px;
+}
+
+.fun-nave .buy-car .count {
+    position: absolute;
+    /* 框子在右上角 */
+    right: 0;
+    top: 0;
+
+    width: 19px;
+    height: 19px;
+
+    color: #fff;
+    text-align: center;
+    line-height: 19px;
+
+    background-position: 0 -51px;
+}
+
+/* 搜索框 */
+.fun-nave .search {
+    position: absolute; /* 绝对定位后脱标 让其相对row来定位 */
+    top: 80px;
+    right: 70px;
+}
+
+.fun-nave .search input { /* input是行内级元素 */
+    width: 252px;
+    height: 22px;
+    line-height: 22px;
+    color: #333;
+
+    border: none;
+    border-bottom: 1px solid #D8CEBC;
+}
+
+.fun-nave .search .button {
+    float: right; /* 让button脱标 浮动元素是无法和行内级非替换元素重叠的 所以会自动把input挤到左边 */
+
+    width: 20px;
+    height: 20px;
+    background-position: 0 -291px;
+}
+
+.fun-nave .search .button:hover {
+    background-position: 0 -261px;
+}
+
+.fun-nave .search .placeholder { /* 占位文字 */
+    position: absolute;
+    top: 4px;
+    left: 11px;
+
+    color: #999;
+}
+
+/* 选项卡 */
+.fun-nave .tab-nav {
+    position: absolute; /* 父元素变成绝对定位 也可以同时清浮动 */
+    bottom: 20px;
+    width: 100%; /* 直接填充父元素 */
+}
+
+.fun-nave .tab-nav .item {
+    float: left;
+
+    height: 23px;
+    margin: 0 24px;
+
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.fun-nave .tab-nav .item a {
+    display: block;
+    padding-bottom: 5px;
+}
+
+.fun-nave .tab-nav .item:hover a,
+.fun-nave .tab-nav .item.active a { /* 激活和鼠标滑过 都需要变颜色 */
+    color: #b4a078;
+    border-bottom: 3px solid #b4a078;
+}
+
+.fun-nave .tab-nav .divider {
+    float: left;
+    width: 1px;
+    height: 20px;
+    background-color: #ccc;
+}
+/* endregion */
+
+/* region 轮播图 ********************/
+.slider {
+    /* 方便上一页/下一页按钮的定位 */
+    position: relative;
+    /* 图片超出父元素的部分自动隐藏 */
+    overflow: hidden;
+}
+
+.slider .image-list {
+    position: relative;
+    /* 让图片自适应屏幕 水平居中 */
+    left: -960px;
+    margin-left: 50%;
+
+    height: 420px;
+}
+
+.slider .image-list li {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* 上下一页按钮 */
+.slider .prev {
+    left: 150px;
+}
+
+.slider .next {
+    right: 150px;
+}
+
+/* 换页按钮 */
+.slider .page-list {
+    position: absolute;
+    bottom: 15px;
+    /* 让定位元素水平居中（一定要设置宽度） */
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 400px;
+    text-align: center; /* 让里面的元素也居中 */
+}
+
+.slider .page-list li {
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: middle; /* 让那一排小圆点对齐 */
+}
+
+.slider .page-list button {
+    display: block; /* 让其变为block 防止父元素的vertical-align影响 */
+    width: 12px;
+    height: 12px;
+    background-color: #bfbbba;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.slider .page-list button:hover,
+.slider .page-list .active button {
+    /* 鼠标挪上去的三个圈效果 其实是扩散模糊效果+边框+背景挖空 */
+    box-shadow: 0 0 0 4px #dfcead;
+    border: 2px solid #b4a078;
+    background-color: transparent;
+}
+/* endregion */
+
+/* region 品牌制造商 ********************/
+.brand {
+    margin-top: 30px;
+}
+
+.brand .item { /* 存放的是图片 统统让它们脱标左浮 */
+    position: relative;
+    float: left;
+    text-align: center;
+}
+
+/* 采用定位来解决图片与文字的层叠问题 */
+.brand .item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.brand .item .text-info {
+    position: relative;
+    text-align: center;
+    color: #666;
+    z-index: 1;
+}
+
+.brand .item .name {
+    margin: 48px 0 19px;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.brand .item .price {
+    display: inline-block;
+
+    border-top: 1px solid #666;
+    padding-top: 17px;
+    font-size: 14px;
+}
+
+.brand .large {
+    width: 357px;
+    height: 320px;
+    margin-right: 9px;
+}
+
+.brand .small {
+    width: 357px;
+    height: 155px;
+}
+
+.brand .last {
+    margin-top: 10px;
+}
+/* endregion */
+
+/**************************************************华丽的分割线*******************************************************/
+
+/* region 新品首发 ********************/
+.new-products {
+    margin-top: 50px;
+    padding-bottom: 60px;
+}
+
+.new-products .arrow-btn.pre {
+    left: -70px;
+}
+
+.new-products .arrow-btn.next {
+    right: -70px;
+}
+
+.new-products .content {
+    margin-right: -10px;
+}
+
+.new-products .product {
+    width: 265px;
+    margin-right: 10px;
+}
+
+.new-products .product .image {
+    width: 265px;
+    height: 265px;
+}
+
+.new-products .product .image .cover {
+    position: absolute; 
+    left: 0;
+    top: 0;
+    display: none;
+}
+
+.new-products .product .brand-name {
+    border-left: 1px solid #999;
+    padding-left: 10px;
+    margin-left: 7px;
+    color: #999;
+}
+
+.new-products .product .image:hover .cover {
+    display: block;
+}
+
+.new-products .product:hover {
+    background-color: #f4f0ea;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, .2);
+}
+
+/* endregion */
+
+/* region 人气推荐 ********************/
+.popular {
+    padding: 60px 0 50px;
+    background-color: #f4f0ea;
+}
+
+.popular .rank {
+    float: left;
+    padding-left: 13px;
+}
+
+.popular .rank a {
+    float: left;
+    width: 70px;
+    height: 28px;
+    margin-right: 55px;
+    font-size: 14px;
+    line-height: 28px;
+    text-align: center;
+}
+
+.popular .active {
+    border-bottom: 2px solid #b4a078;
+    color: #b4a078;
+}
+
+.popular .content {
+    margin-right: -10px;
+}
+
+.popular .product {
+    background-color: #fff;
+    margin-right: 10px;
+    height: 260px;
+    margin-bottom: 10px;
+}
+
+.popular .product.large {
+    height: 530px;
+}
+
+.popular .product.large .image {
+    height: 390px;
+    width: 390px;
+    margin-bottom: 18px;
+}
+
+.popular .product.large .name {
+    margin-top: 7px;
+    margin-bottom: 13px;
+    font-size: 18px;
+}
+
+.popular .product.large .price {
+    font-size: 18px;
+    height: 18px;
+    line-height: 1;
+}
+
+.popular .product.large .image img {
+    margin-top: 40px;
+}
+
+.popular .product .image {
+    width: 223px;
+    height: 180px;
+    border-bottom: 1px solid #F4F0EA;
+    text-align: center;
+}
+
+/* endregion */
+
+/* region 限时购 ********************/
+.limit {
+    margin-top: 58px;
+}
+
+.limit .header .title {
+    float: left;
+    margin-right: 20px;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.limit .time {
+    float: left;
+    width: 224px;
+    height: 377px;
+    text-align: center;
+    background: url("../images/time-bg.jpg");
+}
+
+.limit .time .title {
+    height: 36px;
+    margin-bottom: 11px;
+    margin-top: 60px;
+    font-size: 28px;
+    line-height: 36px;
+    color: #615548;
+}
+
+.limit .time .divider {
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    margin-bottom: 18px;
+    background-color: #61594b;
+}
+
+.limit .time .subtitle {
+    margin-bottom: 18px;
+    font-size: 18px;
+    color: #615548;
+    line-height: 22px;
+    height: 22px;
+}
+
+.limit .time .time-detail {
+    height: 40px;
+    margin-bottom: 50px;
+    line-height: 40px;
+}
+
+.limit .time .colon {
+    font-weight: 700;
+    margin: 0 5px;
+    color: #333;
+}
+
+.limit .time .detail {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 18px;
+    background-color: #615548;
+}
+
+.limit .time .view-all {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    border-radius: 15px;
+    font-size: 14px;
+    line-height: 30px;
+    color: #fff;
+    background-color: #a7936e;
+}
+
+.limit .item {
+    float: left;
+    width: 432px;
+    height: 187px;
+    border: 1px solid #f0ece4;
+    border-left: none;
+}
+
+.limit .item img {
+    float: left;
+}
+
+.limit .item .progress-bar {
+    float: left;
+    position: relative;
+    margin-left: 40px;
+    margin-top: 40px;
+    width: 152px;
+    height: 10px;
+    border-radius: 5px;
+    border: 1px solid #f2cecd;
+    overflow: hidden;
+}
+
+.limit .item .progress-bar .value {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 10px;
+    background-color: #ffe5e5;
+}
+
+/* endregion */
+
+/* region 居家 ********************/
+.topic {
+    margin-top: 60px;
+}
+
+.topic .category-list {
+    float: right;
+    padding-top: 14px;
+}
+
+.topic .category-list li {
+    float: left;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.topic .category-list li::before {
+    content: "/";
+    margin: 0 10px;
+}
+
+.topic .category-list li:first-child::before {
+    display: none;
+}
+
+.topic .banner {
+    display: block;
+    height: 310px;
+    margin-bottom: 20px;
+}
+
+.topic .content {
+    margin-right: -10px;
+}
+
+.topic .product {
+    margin-right: 10px;
+}
+
+.topic .product .image img {
+    background-color: #f4f4f4;
+}
+
+/* endregion */
+
+/* region 评论模块 ********************/
+.comments {
+    padding: 60px 0;
+    background-color: #f4f0ea;
+}
+
+.comments .content {
+    margin-right: -12px;
+}
+
+.comments .item {
+    position: relative;
+    float: left;
+    width: 355px;
+    height: 492px;
+    margin-right: 12px;
+    background-color: #fff;
+}
+
+.comments .image {
+    width: 355px;
+    height: 355px;
+    display: block;
+    overflow: hidden;
+}
+
+.comments .image img {
+    width: 353px;
+    height: 353px;
+    border: 1px solid transparent;
+}
+
+.comments .arrow-btn.pre {
+    left: -70px;
+}
+
+.comments .arrow-btn.next {
+    right: -70px;
+}
+
+.comments .info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    padding: 15px;
+    background-color: #fff;
+    width: 305px;
+    height: 130px;
+}
+/* endregion */
+
+/* region 尾部 ********************/
+.footer1 {
+    height: 100px;
+    padding-top: 60px;
+    padding-bottom: 34px;
+    border-top: 1px solid #e8e8e8;
+}
+
+.footer1 .col {
+    float: left;
+    height: 180px;
+    width: 363px;
+    width: 33.33333%;
+    box-sizing: border-box;
+}
+
+.footer1 .service a {
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+    padding-top: 50px;
+    border: 1px solid #000;
+    font-size: 14px;
+    text-align: center;
+    background: url("../images/service.png") no-repeat center 20px;
+}
+
+.footer1 .service a:hover {
+    background-image: url("../images/service2.png");
+}
+
+.footer1 .what {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+.footer2 {
+    background-color: #414141;
+    height: 100px;
+}
+
+.footer2 .col {
+    float: left;
+    width: 33.33333%;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+}
+/* endregion */

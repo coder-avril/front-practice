@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>无需列表的应用</title>
+    <style>
+        .list {
+            /* 去除li前面的项目符号 */
+            list-style-type: none;
+            font-family: "雅黑";
+        }
+
+        .list .item { /* 让li之间可以有点间隔 */
+            margin-bottom: 5px;
+        }
+
+        .list .item .tag { /* 普通tag的共有属性 */
+            color: #fff;
+            background-color: #999;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .list .item .tag.main { /* 特殊tag 注意这里的 .tag和.main 不能有空格 负责不是交集而是后代选择器了 */
+            background-color: #D60000;
+        }
+
+        .list .item a {
+            text-decoration: none;
+            color: #3B5998;
+        }
+
+        .list .item a:hover {
+            text-decoration: underline;
+            color: #D10301;
+        }
+    </style>
+</head>
+<body>
+<!-- 尽量作到标签语义化 -->
+<ul class="list">
+    <li class="item">
+        <span class="tag main">1</span>
+        <a href="#">针尖对麦芒 WEY VV7s与马自达CX-5</a>
+    </li>
+    <li class="item">
+        <span class="tag main">2</span>
+        <a href="#">躁动的心 媳妇为法拉利458当车模</a>
+    </li>
+    <li class="item">
+        <span class="tag main">3</span>
+        <a href="#">越看越喜欢 奔驰AMG A 45提车经历</a>
+    </li>
+    <li class="item">
+        <span class="tag">4</span>
+        <a href="#">你是我的黑武士 秀宝马740Li领先型</a>
+    </li>
+    <li class="item">
+        <span class="tag">5</span>
+        <a href="#">无法拒绝的机器 宝马M2提车满月记</a>
+    </li>
+</ul>
+</body>
+</html>

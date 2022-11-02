@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下载</title>
+    <style>
+        .download-app {
+            position: relative;
+            border: 1px solid #fff;
+            display: inline-block;
+            width: 100px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            text-decoration: none;
+            margin-left: 100px;
+            color: #000;
+        }
+
+        .download-app:hover .code {
+            /* 由于二维码已经脱标了 所以无所谓了 是inline 还是block都可以显示出来 */
+            display: inline;
+        }
+
+        .download-app .code {
+            display: none;
+            position: absolute;
+            border: 1px solid #ddd;
+            top: 100%;
+            /* 居中 自己的一半减去父元素的一半 */
+            left: -150px;
+            margin-left: 50%; /* 50% 乘以父元素的宽度 */
+        }
+    </style>
+</head>
+<body>
+<a href="#" class="download-app">
+    下载App
+    <img src="./images/case13-code.png" alt="" class="code">
+</a>
+</body>
+</html>

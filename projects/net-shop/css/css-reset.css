@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+/* CSS Reset 样式重置（一般用到啥就先重置啥） */
+body, dl, dt, dd, ul, ol, li,
+h1, h2, h3, h4, h5, h6, pre, p,
+form, button, input, textarea, select,
+table, tr, td, th { /* 去除默认内外边距 */
+    margin: 0;
+    padding: 0;
+}
+
+table { /* 表格相邻边合并 */
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+i, em {
+    font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6, strong, b {
+    font-weight: normal;
+}
+
+li { /* 去除项目符号 */
+    list-style: none;
+}
+
+button, input, textarea, select, a {
+    outline: none;
+}
+
+img {
+    border: none;
+    vertical-align: top; /* 垂直方向顶部对齐（可以解决图片底部的莫名其妙的空隙 */
+}
+
+a {
+    text-decoration: none;
+}

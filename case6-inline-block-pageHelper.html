@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>通过inline-block实现分页</title>
+    <style>
+        .page { /* 去除列表的项目符号 */
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            /* font和text相关的样式是可以让子元素继承的 */
+            text-align: center;
+            font-size: 14px;
+            /* 前期不太熟练的时候 建议给相关标签加上背景色 方便调试 这也是个小技巧 */
+            /*background-color: #0b0;*/
+        }
+
+        .page li {
+            /* li原本是block充满整行 这里改为inline-block让li之间可以同行显示 同时可以随意设置宽高 */
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            /* 行高跟高度一样：保证文字垂直居中 */
+            line-height: 30px;
+        }
+
+        .page .prev, .page .next { /* 优先级比 .page li 要高 */
+            /* 所以 宽度会覆盖为70px */
+            width: 70px;
+        }
+
+        .page li a { /* 让行内级元素充满父元素li */
+            display: block;
+            /* block元素只能宽度自动填充 高度还是得自己设置 */
+            height: 30px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            
+        }
+
+        .page li a:hover {
+            background-color: #f2f8ff;
+            border: 1px solid #38f;
+        }
+
+        .page li strong {
+            display: block;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+<ul class="page">
+    <li class="prev"><a href="#">&lt; 上一页</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><strong>3</strong></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">6</a></li>
+    <li class="next"><a href="#">下一页 &gt;</a></li>
+</ul>
+</body>
+</html>

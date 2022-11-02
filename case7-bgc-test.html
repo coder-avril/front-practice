@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>让图片水平居中</title>
+    <style>
+        /*div {
+            width: 400px;
+            height: 75px;
+            background-color: cornflowerblue;
+            text-align: center;
+        }*/
+
+        div {
+            /* 最后将宽度注释掉 会让div自动填充 达到效果无论怎么拖拽浏览器 背景图片始终居中 */
+            /* width: 400px; */
+            height: 50px;
+            background-color: #3E98F0;
+            background-image: url("./images/case7-news.png");
+            /* 宽度（保持原来宽高比自动计算）高度30px */
+            background-size: auto 30px;
+            /* 不平铺 */
+            background-repeat: no-repeat;
+            /* 居中显示 */
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+<!-- 方法1：通过img标签实现（不推荐
+<div>
+    <img src="./images/news.png" alt="">
+</div>
+-->
+<!-- 方法2：通过背景来实现 -->
+<div></div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>实现下拉框</title>
+    <style>
+        .mail ul { /* 去除列表的默认内外边距 */
+            padding: 0;
+            margin: 0;
+            display: none;
+            border: 1px solid #999;
+        }
+
+        .mail li { /* 去除list的项目符号 */
+            list-style: none;
+            font-size: 12px;
+        }
+
+        .mail li a { /* 去除a元素的下划线 */
+            text-decoration: none;
+            color: #000;
+            /* 让a标签也变为block元素 可以是背景色自动充满 */
+            display: block;
+        }
+
+        .mail li a:hover {
+            background-color: #0ff;
+        }
+
+        .mail { /* 所有子元素都是block元素 会自动充满父元素 所以宽度可以统一直接设在父元素 */
+            width: 100px;
+            /* text-align也是同理 */
+            text-align: center;
+        }
+
+        .mail .title {
+            background-color: #999;
+            color: #fff;
+            /* 让行内级元素span成为block元素 */
+            display: block;
+        }
+
+        /*
+        不建议用这种方式找到ul 因为这样会导致一个bug 就是鼠标一旦移开title类对应的span后 就会再次自动隐藏下拉框
+        小贴士：通过hover找元素的时候 记得无视掉hover本身去想象
+        .mail .title:hover+ul {
+            display: block;
+        }
+        */
+
+        .mail:hover ul { /* 鼠标移动到父元素div时 自动展示下拉选项效果 */
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<div class="mail">
+    <span class="title">邮箱</span>
+    <ul>
+        <li><a href="#">QQ邮箱</a></li>
+        <li><a href="#">126邮箱</a></li>
+        <li><a href="#">139邮箱</a></li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>请计算一下</title>
+    <style>
+        p {
+            font-size: 20px;
+            font-family: "微软雅黑";
+        }
+
+        p sub {
+          /* 通常情况下 0.5em 表示相对于当前标签的font-size的50% 但是font-size总不能相对自己 这个时候其实是相对父元素的font-size */
+          /* 20px * 0.5 = 10px */
+          font-size: 0.5em;
+          position: relative;
+
+          /* 10px * 0.4 = 4px */
+          bottom: 0.4em; 
+        }
+
+        p sup {
+            /* 20px * 0.5 = 10px */
+            font-size: 0.5em;
+        }
+    </style>
+</head>
+<body>
+<p>
+    请计算一下n<sub>1</sub> + n<sub>2</sub> + n<sup>2</sup>的值
+</p>
+</body>
+</html>

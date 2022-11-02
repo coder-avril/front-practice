@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>定位练习-电影海报</title>
+    <style>
+        .move { /* 让父元素变为相对定位 实现“子绝父相”的效果 */
+            position: relative;
+            width: 270px;
+        }
+
+        .move:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .move .icon {
+            position: absolute;
+            padding: 5px;
+            background-color: cornflowerblue;
+            /* 让块级元素变为inline-block使其自动包裹内容 */
+            display: inline-block;
+            top: 10px;
+            left: -5px;
+            /* 加上阴影 达到悬浮效果 */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .move .icon img {
+            height: 12px;
+        }
+
+        .move .ticket {
+            position: absolute;
+            right: 5px;
+            bottom: 10px;
+            padding: 2px 10px;
+            text-decoration: none;
+            /* cursor: pointer; */
+            background-color: #f00;
+            color: #fff;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="move">
+    <img src="./images/case11-film.jpg" alt="">
+    <div class="icon">
+        <img src="./images/case11-imax.png" alt="">
+    </div>
+    <a href="#" class="ticket">预售</a>
+</div>
+</body>
+</html>

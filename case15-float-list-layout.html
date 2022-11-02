@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动布局-子标题栏</title>
+    <style>
+        /* 重置CSS */
+        ul, li, h2 {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        /* 练习相关样式 */
+        a:hover {
+            color: #35b5ff;
+        }
+
+        .container {
+            width: 700px;
+            height: 30px;
+            margin: 0 auto;
+        }
+
+        .container h2 {
+            float: left;
+            font-size: 30px;
+            line-height: 30px;
+            font-family: "微软雅黑";
+        }
+
+        .container ul {
+            float: left;
+            /* 测量并设置间距 */
+            margin-top: 5px;
+            margin-left: 20px;
+        }
+
+        .container li {
+            float: left;
+            font-size: 16px;
+            /* 测量并设置间距 */
+            margin-right: 15px;
+        }
+
+        /* 实现下划线 */
+        .container li::after {
+            content: ""; /* before和after的content不能省略 即使没有内容 */
+            display: none; /* 它们俩默认是inline 这里改为block为了让他们成为块级 后面自动居中 */
+            margin: 2px auto 0;
+            background-color: #35b5ff;
+            height: 2px;
+            width: 15px;
+            border-radius: 5px;
+        }
+
+        .container li:hover::after { /* ::after前面一定不要有空格 否则就是好后代了 */
+            display: block;
+        }
+
+        .container .rank {
+            float: right;
+            line-height: 30px;
+            font-size: 13px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2><a href="#">剧集 &gt;</a></h2>
+    <ul>
+        <li><a href="#">最新</a></li>
+        <li><a href="#">大陆剧</a></li>
+        <li><a href="#">英美剧</a></li>
+        <li><a href="#">港台剧</a></li>
+    </ul>
+    <a class="rank" href="#">剧集排行</a>
+</div>
+</body>
+</html>

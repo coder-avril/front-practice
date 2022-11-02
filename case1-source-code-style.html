@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS最常用属性练习（展示代码样式）</title>
+    <style>
+        pre {
+            background-color: black;
+            width: 350px;
+            /* 在pre的上下左右都添加20px的内边距 */
+            padding: 20px;
+        }
+
+        span {
+            font-family: "宋体";
+            font-size: 25px;
+        }
+
+        .name { /* 属性名 */
+            color: red;
+        }
+
+        .number { /* 数字 */
+            color: mediumpurple;
+        }
+
+        .normal { /* 普通文本 */
+            color: white;
+        }
+
+        .comment { /* 注释 */
+            color: green;
+        }
+
+        .selector { /* 选择器 */
+            color:skyblue;
+        }
+    </style>
+</head>
+<body>
+<!-- pre标签可以保留空白 -->
+<pre>
+<!-- 标签尽量见名知意 code虽然没有啥特别的样式 但是可以提醒别人下面是一段代码 -->
+<code>
+<span class="comment">/* box style */</span>
+<span class="selector">.box</span> <span class="normal">{</span>
+    <span class="name">margin</span><span class="normal">:</span> <span class="number">0 0 30</span><span class="normal">px</span> <span class="number">0</span><span class="normal">;</span>
+    <span class="name">padding</span><span class="normal">:</span> <span class="number">15</span><span class="normal">px;</span>
+    <span class="name">color</span><span class="normal">: red;</span>
+    <span class="name">background-color</span><span class="normal">: #007799;</span>
+    <span class="name">box-shadow</span><span class="normal">: none;</span>
+<span class="normal">}</span>
+</code>
+</pre>
+<!--
+    使用class选择器来修改项目的好处
+    1、方便项目维护（需求变更
+    2、保证了样式和结构分离
+    3、能够统一修改局部的某一类元素，而不会影响其他元素
+-->
+</body>
+</html>

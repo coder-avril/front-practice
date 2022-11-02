@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>利用浮动布局2</title>
+    <style>
+        ul, li { /* CSS重置 */
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            width: 790px;
+            height: 600px;
+            border: 1px solid #000;
+            margin: 0 auto;
+            background-color: #0f0;
+        }
+
+        li {
+            width: 150px;
+            height: 150px;
+            background-color: #ff0;
+            float: left;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        li:nth-of-type(5n) { /* 通过结构伪类 让右边的元素去掉margin */
+            margin-right: 0;   
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
